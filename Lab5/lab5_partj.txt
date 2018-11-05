@@ -1,0 +1,57 @@
+void shootout(int n)
+{
+  int i, j, ret;
+  char *argv[21] = { (char *) 0 };
+  signal(SIGTERM, SIG_IGN);
+  signal(SIGINT, SIG_IGN);
+  signal(SIGUSR1, SIG_IGN);
+
+  argv[0] = (char *) malloc(10);
+  sprintf(argv[0],"./wildcat");
+  for (i=0; i<n; i++)
+  {
+    argv[i+1] = (char *) malloc(10);
+    if ((pid[i]=fork())==0)
+        {
+          argv[i+1] = (char *) 0;
+      myPid = getpid();
+      printf("Created child %d with pid %d\n", i+1, myPid);
+      // call execve to execute the code and pass in command line args
+      execve("./wildcat" , argv, NULL);
+      perror("Unable to execute ./wildcat, exiting");
+      exit(1);
+    }
+    else
+    {
+      sprintf(argv[i+1],"%d", pid[i]);
+      // in the parent update the list of command line args to include
+      // the pid of the child just created
+    }
+  }
+  // parent waits for n-1 children to exit
+  for (i=1; i<n; i++)
+  {
+    ret = wait(NULL); // wait on any child to exit, return value = pid
+    if (ret>0)
+    {
+      for (j=0; j<n; j++)
+      {
+                if (pid[j]==ret)
+                        pid[j]=-1; // mark the child as terminated
+      }
+    }
+  }
+  // parent identifies the last remaining child
+  for (j=0; j<n; j++)
+  {
+        if (pid[j]>0)
+        {
+          printf("Congratulations, process %d (pid = %d), you win!\n",j,pid[j]);
+          printf("Unfortunately, I have to kill you now.\n");
+          kill(pid[j],9); // kill the winner
+          pid[j]=-1;
+        }
+  }
+  // parent exits
+  exit(0);
+}

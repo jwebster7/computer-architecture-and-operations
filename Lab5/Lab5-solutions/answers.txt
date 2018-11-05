@@ -1,0 +1,14 @@
+Lab 5 Answers to Questions:
+
+(a).099378
+
+(b)(2,500,000/1)*.099378 = 248,445
+
+(c)Prints "Alarm Clock" and exits the shell.
+
+(d)
+
+A signal is caught no matter what but runs slower.(e)No signal caught.
+
+(g)Done. Added an If statement.
+
