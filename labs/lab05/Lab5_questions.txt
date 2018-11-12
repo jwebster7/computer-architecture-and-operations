@@ -1,0 +1,28 @@
+Lab 5 Answers to Questions:
+
+(a) .069133 seconds
+
+(b) [(2,500,000,000 cycles/ 1 second) * .069133 seconds] = 172,832,500 cycles
+
+(c) It prints 'Alarm Clock' after 5 seconds then terminates the shell
+
+(d) One signal is caught no matter how many are genearted. Note it runs a tiny bity slower.
+
+(e) In this scenario, no signal is caught.
+
+(f) The path for the 'who' exec is found at /usr/bun/who. We can then pass the address in at
+    the case where 'W' commmand is giving using execl(). We have to pass '-q' as well and a
+    char * initialized to NULL.
+
+(g) Added if-else inside the case of 'P';
+    if the second comman fed in is not empty (cptr[1] != NULL), we call
+        "execl("/bin/ps", "ps", "--forest", "-u", (char *) cptr[1], (char *) NULL);"
+    else the second command fed in is NULL (cptr[1] == NULL), we call
+        "execl("/bin/ps", "ps", "--forest", (char *) NULL);"
+
+(h)
+
+(i)
+
+
+

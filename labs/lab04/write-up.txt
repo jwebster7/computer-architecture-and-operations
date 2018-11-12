@@ -1,0 +1,30 @@
+Author: Joe Webster
+Class: CIS 450
+Lab: Optimization - Lab 4
+
++ Multiply
+	- For multiply.c, I mostly did code motion. There wasn't really an
+	  opportunity for loop unrolling. So I made temperorary variables
+	  outside of nested loops consisting of variables which were unaltered
+	  in the iterator of that loop. This saved me time because I am not
+	  computing products or accessing indicees redundently.
+
++ Filter
+	- For filter.c, I mostly did loop unrolling and condensing boolean expressions
+	  into bigger if statements. I unrolled the innermost loop
+	  and created some temporary variables. This is seen in the filter_optimized(int, int)
+	  method.
+
++ Emboss
+	- For emboss.c, I was able to unroll the innermost loop (iterating over k). I was 
+	  also able to save time on thte test by creating pointers and temperorary variables 
+	  outside of the nested loops. The pointers were used for accessing indicees of the
+	  2-d array, 'a'. Accessing these indicees using pointers was more efficient because
+	  I could access them once at the beginning in the nested loops and re-use them later 
+	  on. I also made temperary int variables for holding the values accessed from mask[][].
+	  This saved time because we weren't accessing the indicees repeatedly, and only had to
+	  access them in memory once instead of doing it redundently. We can see the result of 
+	  this by looking at the reassignment of tmp inside the loops. In the naive version, 
+	  tmp is reassigned every iteration within the innermost loop based on k. I was able to
+	  unroll this loop and repeat the assigning of tmp 3 times instead of using a counter
+	  and loop. 

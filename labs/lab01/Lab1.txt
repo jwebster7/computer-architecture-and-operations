@@ -1,0 +1,18 @@
+-881153 -881173
+-2147483648 -2147483648
+-2147483648 2147483648
+0 255
+65535 65535
+
+1a. 22/7 = 11.0010010010010010010010
+1b. 0x40490FDB = 11.0010010000111111011011
+
+2a. 30547 / 21600 = 1.01101010000010011101110
+2b. 577 / 408 = 1.01101010000010100000101
+2c. With A, the approximation is less than the actual value. With B, the approximation is great than the actual value.
+2d. 7.75 = 0000 0111.1100. This value can be stored exactly with a double and float. Floats may only store up to and including 7 digits while Doubles may store (inclusive)15. 
+2e. The largest odd number which can be stored as a float is 16,777,215. The largest odd number which can be stored as a double is 9,007,199,254,740,991.
+2f. The largest even number which can be stored as a float is 16,777,214. The largest even number which can be stored as a double is 9,007,199,254,740,990.
+2g. 1.797 * 10^308
+2h. 2.225 * 10^-308
+2i. -2^(-1074)
